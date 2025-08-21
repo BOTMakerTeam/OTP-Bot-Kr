@@ -15,19 +15,15 @@ import random
 from datetime import datetime, timedelta
 
 # --- Configuration ---
-BOT_NAME = "BlackX Bot"
+BOT_NAME = "BlackXBOT"
 USERNAME = "BlackX"
 PASSWORD = "BlackX@#"
 DB_FILE = "sms_database_np.db" 
 
 # --- Telegram Configuration ---
 TELEGRAM_BOT_TOKEN = "8471160586:AAEq28YvhgQ26pR9Wb8GNfbb3ZXdxwKxOYA"
-DEFAULT_GROUP_CHAT_ID = "-1002820927082" 
-DM_CHAT_ID = "7701278483" 
-
-# --- New Configuration ---
-DEVELOPER_NAME = "Heart"
-DEVELOPER_TG_ID = "7701278483" 
+DEFAULT_GROUP_CHAT_ID = "-1002617899939" 
+DM_CHAT_ID = "" 
 
 # --- API Endpoints ---
 BASE_URL = "http://51.89.99.105/NumberPanel"
@@ -49,7 +45,6 @@ reported_sms_hashes_cache = set()
 
 # --- Data for Formatting ---
 
-# <<< সমাধান: কান্ট্রি কোডের সম্পূর্ণ তালিকা আবার যোগ করা হলো >>>
 COUNTRY_CODES = {
     '1': ('USA/Canada', '🇺🇸'), '7': ('Russia', '🇷🇺'), '20': ('Egypt', '🇪🇬'), '27': ('South Africa', '🇿🇦'),
     '30': ('Greece', '🇬🇷'), '31': ('Netherlands', '🇳🇱'), '32': ('Belgium', '🇧🇪'), '33': ('France', '🇫🇷'),
@@ -104,7 +99,6 @@ def format_telegram_message(recipient_number, sender_name, message, otp, sms_tim
     country_name, country_flag = get_country_info(recipient_number)
     service_name = detect_service(sender_name, message)
     verse, surah_info = random.choice(QURANIC_VERSES)
-    developer_link = f"[{DEVELOPER_NAME}](tg://user?id={DEVELOPER_TG_ID})"
     
     return f"""✅ {country_flag} *{country_name} {service_name} OTP Code Received!*
 ━━━━━━━━━━━━━━━━━━━━
@@ -121,9 +115,7 @@ def format_telegram_message(recipient_number, sender_name, message, otp, sms_tim
 > _{verse}_
 > — _{surah_info}_
 ━━━━━━━━━━━━━━━━━━━━
-*Bot Developer:* {developer_link}
----
-*Powered By Stream Vault Method*"""
+*Powered By KR Team*"""
 
 class TelegramSender:
     def __init__(self, token, stop_signal):
@@ -297,4 +289,5 @@ def main():
         print(f"\n[!!!] Critical startup error: {e}")
 
 if __name__ == "__main__":
+
     main()
